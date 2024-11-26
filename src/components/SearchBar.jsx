@@ -26,7 +26,7 @@ function SearchBar() {
         </>
       ) : (
         // Search Input and Cancel Button
-        <div className="flex items-center space-x-2 w-full">
+        <div className="flex items-center space-x-2">
           <input
             type="text"
             placeholder="Search..."

@@ -34,9 +34,9 @@ export default function ThemeToggle() {
             onClick={toggleTheme}
         >
             {darkMode ? (
-                <FaMoon className="w-6 h-6" />
-            ) : (
                 <BsSunFill className="w-6 h-6" />
+            ) : (
+                <FaMoon className="w-6 h-6" />
             )}
         </button>
   )

@@ -7,7 +7,9 @@ function Navbar() {
     <nav className="container mx-auto px-4 py-3 bg-gray-100 dark:bg-dark shadow-md">
       <div className="flex items-center justify-between">
         {/* Logo and Search Bar */}
-        <SearchBar />
+        <div className="flex items-center space-x-4">
+          <SearchBar />
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
