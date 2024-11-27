@@ -28,7 +28,7 @@ function Ringtone() {
       }
     };
     getRingtone();
-  }, [id]);
+  }, [likedRingtones]);
 
   const togglePlayPause = (fileUrl, id) => {
     const currentAudio = audioRefs.current[id];
@@ -119,7 +119,7 @@ function Ringtone() {
               >
                 <Heart size={20}
               fill={likedRingtones[ringtone.id] ? 'red' : 'none'} // Red fill when liked
-              className="transition-all duration-200"/> Like
+              className="transition-all duration-200"/> Like - {ringtone.total_likes}
               </Button>
               <Button variant="ghost" className="flex items-center gap-2">
                 <Share2 size={20} className="text-blue-500" /> Share

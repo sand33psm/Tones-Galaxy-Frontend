@@ -10,7 +10,7 @@ const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, l
     
 
   return (
-    <div className="group bg-white dark:bg-medium dark:border-white/20 shadow-md hover:shadow-xl transition-shadow duration-300">
+    <div className="group bg-white dark:bg-medium dark:border-white/20 shadow-md hover:shadow-xl transition-shadow duration-300 border-gray-300 rounded-lg border-2">
       <div className="relative">
         <Button
           variant="outline"
