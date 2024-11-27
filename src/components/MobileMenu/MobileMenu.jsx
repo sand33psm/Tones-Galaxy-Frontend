@@ -22,7 +22,7 @@ function MobileMenu() {
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div
-          className="absolute top-0 right-0 w-3/4 sm:w-1/2 h-screen bg-gray-50 dark:bg-dark shadow-lg z-50 p-6 flex flex-col space-y-4"
+          className="absolute top-0 right-0 w-3/4 sm:w-1/2 h-screen bg-gray-50 dark:bg-medium shadow-lg z-50 p-6 flex flex-col space-y-4"
         >
           {/* Close Button */}
           <div className="flex justify-end">

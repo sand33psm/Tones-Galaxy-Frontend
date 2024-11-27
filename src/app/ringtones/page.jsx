@@ -1,5 +1,6 @@
 // app/ringtones/page.jsx
-import { fetchRingtones } from "../utils/api";
+// import { fetchRingtones } from "../../utils/api";
+import { fetchRingtones } from "@/services/ringtonesService";
 import Navbar from "../../components/Navbar/Navbar";
 import RingtoneGrid from "../../components/RingtoneGrid/RingtoneGrid";
 

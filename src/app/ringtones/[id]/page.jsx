@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { fetchRingtone } from "@/app/utils/api";
+// import { fetchRingtone } from "@/utils/api";
+import { fetchRingtone } from "@/services/ringtonesService";
 import { Play, Pause, Heart, Share2 } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
