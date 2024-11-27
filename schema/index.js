@@ -19,9 +19,12 @@ export const RegisterSchema = z.object({
 });
 
 export const LoginSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address",
-  }),
+  usernameOrEmail: z
+    .string()
+    .min(1, { message: "Please enter your username or email address" })
+    .refine((value) => /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value) || /^[a-zA-Z0-9_]+$/.test(value), {
+      message: "Please enter a valid email address or username",
+    }),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters long",
   }),

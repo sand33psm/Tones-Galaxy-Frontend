@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import CardWrapper from "./card-wrapper";
 import {
   Form,
@@ -9,7 +11,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-// import { LoginSchema } from "@/schema";
 import { LoginSchema } from "../../../schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,21 +18,40 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useFormStatus } from "react-dom";
 import { useState } from "react";
+import { apiClient } from "@/utils/api";
+import { ACCESS_TOKEN, LOGIN_API_PATH, REFRESH_TOKEN } from "@/constants";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
+
   const form = useForm({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      email: "",
+      usernameOrEmail: "",
       password: "",
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setLoading(true);
     console.log(data);
+
+    try {
+      const { usernameOrEmail, password } = data; // Adjust to use usernameOrEmail field
+      const res = await apiClient.post(LOGIN_API_PATH, { username: usernameOrEmail, password }); // Send usernameOrEmail as 'username' to the API
+      localStorage.setItem(ACCESS_TOKEN, res.data.access);
+      localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+
+      router.push("/ringtones");
+
+    } catch (error) {
+      console.log("ERROR -> ", error);
+
+    } finally {
+      setLoading(false);
+    }
   };
 
   const { pending } = useFormStatus();
@@ -47,15 +67,14 @@ const LoginForm = () => {
           <div className="space-y-4">
             <FormField
               control={form.control}
-              name="email"
+              name="usernameOrEmail" // Updated name to match the schema
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
-                      type="email"
-                      placeholder="johndoe@gmail.com"
+                      type="text" // Type is now 'text' to handle both username and email
+                      placeholder="Username or Email"
                     />
                   </FormControl>
                   <FormMessage />
@@ -67,9 +86,8 @@ const LoginForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input {...field} type="password" placeholder="******" />
+                    <Input {...field} type="password" placeholder="Password" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

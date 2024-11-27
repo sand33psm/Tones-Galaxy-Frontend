@@ -104,12 +104,12 @@ const RegisterForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  {/* <FormLabel>Email</FormLabel> */}
                   <FormControl>
                     <Input
                       {...field}
                       type="email"
-                      placeholder="abc@gmail.com"
+                      placeholder="email"
                     />
                   </FormControl>
                   <FormMessage />
@@ -121,9 +121,9 @@ const RegisterForm = () => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  {/* <FormLabel>Username</FormLabel> */}
                   <FormControl>
-                    <Input {...field} placeholder="John Doe" />
+                    <Input {...field} placeholder="username" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -134,9 +134,9 @@ const RegisterForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  {/* <FormLabel>Password</FormLabel> */}
                   <FormControl>
-                    <Input {...field} type="password" placeholder="******" />
+                    <Input {...field} type="password" placeholder="password" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -147,9 +147,9 @@ const RegisterForm = () => {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
+                  {/* <FormLabel>Confirm Password</FormLabel> */}
                   <FormControl>
-                    <Input {...field} type="password" placeholder="******" />
+                    <Input {...field} type="password" placeholder="confirm password" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

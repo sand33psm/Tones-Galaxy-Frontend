@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar/Navbar"
 function login() {
   return (
     <>
-    <LoginForm/>
+      <LoginForm/>
     </>
   )
 }

@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-// import { fetchRingtone } from "@/utils/api";
 import { fetchRingtone } from "@/services/ringtonesService";
 import { Play, Pause, Heart, Share2 } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import Navbar from "@/components/Navbar/Navbar";
+import { authApiClient } from "@/utils/api";
 
 function Ringtone() {
   const [ringtone, setRingtone] = useState(null);
   const [error, setError] = useState(null);
   const [playing, setPlaying] = useState(null);
+  const [likedRingtones, setLikedRingtones] = useState({});
+
   const audioRefs = useRef({});
   const { id } = useParams();
 
@@ -47,8 +49,30 @@ function Ringtone() {
     }
   };
 
+  const toggleLike = async (id) => {
+
+    console.log("clicked on like", id);
+    
+    try {
+      const res = await authApiClient.post(`api/v1/ringtones/${id}/like/`);
+      console.log(res);
+
+      setLikedRingtones((prev) => ({
+        ...prev,
+        [id]: !prev[id], // Toggle the like status
+      }));
+    } catch (error) {
+      if (error.status == 401) {
+        console.log(error.status, 'Error occured');
+        router.push('auth/login');
+      }
+    }
+  };
+
   if (error) return <div>Error: {error}</div>;
   if (!ringtone) return <div>Loading...</div>;
+
+
 
   return (
     <>
@@ -68,7 +92,7 @@ function Ringtone() {
               {playing === ringtone.id ? <Pause size={24} /> : <Play size={24} />}
             </Button>
             <h2 className="text-xl font-semibold">{ringtone.name}</h2>
-            <p className="text-sm">{ringtone.description || "No description available."}</p>
+            {/* <p className="text-sm">{ringtone.description || "No description available."}</p> */}
           </CardHeader>
           <CardContent>
             <p className="text-md text-gray-600">
@@ -84,8 +108,18 @@ function Ringtone() {
               className="mt-4 w-full"
             ></audio>
             <div className="mt-4 flex justify-between">
-              <Button variant="ghost" className="flex items-center gap-2">
-                <Heart size={20} className="text-red-500" /> Like
+              <Button variant="ghost" 
+              className={`flex items-center gap-2 ${
+                likedRingtones[ringtone.id] ? 'text-red-500' : 'text-gray-500 dark:text-white'
+              }`}
+              onClick={() => toggleLike(ringtone.id)}
+              style={{
+                backgroundColor: 'transparent', // No background on hover
+              }}
+              >
+                <Heart size={20}
+              fill={likedRingtones[ringtone.id] ? 'red' : 'none'} // Red fill when liked
+              className="transition-all duration-200"/> Like
               </Button>
               <Button variant="ghost" className="flex items-center gap-2">
                 <Share2 size={20} className="text-blue-500" /> Share
