@@ -1,6 +1,6 @@
 import React from 'react';
 import { Music, Download } from 'lucide-react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import Link from "next/link";
 
 const HomePage = () => {

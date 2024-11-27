@@ -6,7 +6,7 @@ import { Play, Pause, Heart, Share2 } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 
 function Ringtone() {
   const [ringtone, setRingtone] = useState(null);
@@ -61,7 +61,7 @@ function Ringtone() {
             <Button
               variant="outline"
               size="icon"
-              className="absolute top-4 right-4 z-10"
+              className="absolute top-8 right-6 z-10 "
               onClick={() => togglePlayPause(ringtone.file, ringtone.id)}
             >
               {playing === ringtone.id ? <Pause size={24} /> : <Play size={24} />}

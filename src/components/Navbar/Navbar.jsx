@@ -1,5 +1,5 @@
 import ThemeToggle from './ThemeToggle';
-import MobileMenu from './MobileMenu';
+import MobileMenu from '../MobileMenu/MobileMenu';
 import SearchBar from './SearchBar'; // Import the client SearchBar
 
 function Navbar() {

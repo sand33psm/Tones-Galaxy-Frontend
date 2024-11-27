@@ -83,7 +83,7 @@ const RingtoneGrid = ({ ringtones }) => {
                 className="ml-auto"
               >
                 <Link
-                  className='bg-black dark:bg-white hover:bg-gray-200'
+                  className='bg-purple-500 dark:bg-white hover:bg-gray-200'
                   href={`http://localhost:8000/api/v1/ringtones/${ringtone.id}/download/`}
                   download
                 >

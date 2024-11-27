@@ -1,7 +1,7 @@
 // app/ringtones/page.jsx
 import { fetchRingtones } from "../utils/api";
-import Navbar from "../../components/Navbar";
-import RingtoneGrid from "../../components/RingtoneGrid";
+import Navbar from "../../components/Navbar/Navbar";
+import RingtoneGrid from "../../components/RingtoneGrid/RingtoneGrid";
 
 export default async function Ringtones() {
   // Fetch ringtone data
