@@ -1,7 +1,6 @@
 "use client";
 
-import { useRouter } from "next/router";
-
+import { useRouter } from "next/navigation"; // Correct import for `useRouter` in Next.js 13+
 import CardWrapper from "./card-wrapper";
 import {
   Form,
@@ -22,17 +21,12 @@ import { useFormStatus } from "react-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN, REGISTER_API_PATH } from "@/constants";
 import { apiClient } from "@/utils/api";
 
-
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // const router = useRouter()
-  
-  useEffect(()=>{
+  const router = useRouter(); // Initialize the useRouter hook
 
-  }, [])
-  
   const form = useForm({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -53,36 +47,30 @@ const RegisterForm = () => {
         password: data.password,
       });
 
-      localStorage.setItem(ACCESS_TOKEN, res.data.access)
-      localStorage.setItem(REFRESH_TOKEN, res.data.refresh)
-      
-      if (res.status == 201){
+      if (res.status === 201) {
         console.log("Account created successfully");
+        router.push("/auth/login"); // Navigate to the login page
       }
-      // useRouter().push("/auth/login")
-      // Handle success, e.g., redirect to login or home page
     } catch (error) {
-      // console.error("ERROR ---> ",error);
       if (error.response && error.response.data) {
         const errors = error.response.data;
 
-        // Check for specific error messages related to username, email, or password
         if (errors.username) {
           form.setError("username", {
             type: "manual",
-            message: errors.username[0], // First error message for username
+            message: errors.username[0],
           });
         }
         if (errors.email) {
           form.setError("email", {
             type: "manual",
-            message: errors.email[0], // First error message for email
+            message: errors.email[0],
           });
         }
         if (errors.password) {
           form.setError("password", {
             type: "manual",
-            message: errors.password[0], // First error message for password
+            message: errors.password[0],
           });
         }
 
@@ -104,7 +92,6 @@ const RegisterForm = () => {
       backButtonHref="/auth/login"
       backButtonLabel="Already have an account? Login here."
     >
-      {/* Display the error message if it exists */}
       {errorMessage && (
         <div className="text-red-500 text-sm mb-4">{errorMessage}</div>
       )}
