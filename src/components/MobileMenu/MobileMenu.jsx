@@ -20,6 +20,12 @@ function MobileMenu() {
     router.push("/auth/register"); // Redirect to register
   };
 
+  // Function to handle redirection to upload
+  const handleUploadClick = () => {
+    setIsMenuOpen(false); // Close the menu
+    router.push("/upload"); // Redirect to upload page
+  };
+
   return (
     <div className="relative md:hidden">
       {/* Menu Toggle Button */}
@@ -47,45 +53,28 @@ function MobileMenu() {
             </button>
           </div>
 
-          {/* Navigation Links */}
-          {/* <nav className="flex flex-col space-y-4">
-            <a
-              href="#"
-              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
-            >
-              Browse
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
-            >
-              Categories
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
-            >
-              Popular
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
-            >
-              Upload
-            </a>
-          </nav> */}
-
           {/* Divider */}
           <hr className="border-gray-300 dark:border-gray-700" />
 
           {/* Action Buttons */}
           <div className="flex flex-col space-y-4">
+            {/* Upload Button */}
+            <button
+              onClick={handleUploadClick} // Trigger upload redirection
+              className="w-full py-3 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+            >
+              Upload
+            </button>
+
+            {/* Login Button */}
             <button
               onClick={handleLoginClick} // Trigger login redirection
               className="w-full py-3 rounded-md bg-purple-600 text-white font-medium hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 transition"
             >
               Login
             </button>
+
+            {/* Sign Up Button */}
             <button
               onClick={handleRegisterClick} // Trigger register redirection
               className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
