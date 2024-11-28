@@ -1,76 +1,98 @@
 "use client";
 
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 function MobileMenu() {
-  // State to toggle the mobile menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter(); // Hook for redirection
+
+  // Function to handle redirection to login
+  const handleLoginClick = () => {
+    setIsMenuOpen(false); // Close the menu
+    router.push("/auth/login"); // Redirect to login
+  };
+
+  // Function to handle redirection to register
+  const handleRegisterClick = () => {
+    setIsMenuOpen(false); // Close the menu
+    router.push("/auth/register"); // Redirect to register
+  };
 
   return (
-    <div className="md:hidden">
+    <div className="relative md:hidden">
       {/* Menu Toggle Button */}
       <button
-        className="text-purple-600 dark:text-purple-400 focus:outline-none"
-        onClick={() => setIsMenuOpen(!isMenuOpen)} // Toggle menu visibility
-        aria-label="Toggle Menu" // Accessibility label for the button
+        className="p-2 rounded-md text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Toggle Menu"
+        aria-expanded={isMenuOpen}
+        aria-controls="mobile-menu"
       >
-        {/* Display the menu or close icon based on the menu state */}
         {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div
-          className="absolute top-0 right-0 w-3/4 sm:w-1/2 h-screen bg-gray-50 dark:bg-medium shadow-lg z-50 p-6 flex flex-col space-y-4"
-        >
+        <div className="fixed top-0 right-0 w-72 h-screen bg-white dark:bg-gray-900 shadow-lg z-50 p-6 flex flex-col space-y-6" id="mobile-menu">
           {/* Close Button */}
           <div className="flex justify-end">
             <button
-              className="text-purple-600 dark:text-purple-400 focus:outline-none"
-              onClick={() => setIsMenuOpen(false)} // Close menu when clicked
-              aria-label="Close Menu" // Accessibility label for the close button
+              className="p-2 rounded-md text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close Menu"
             >
-              {/* Close icon */}
               <X className="w-6 h-6" />
             </button>
           </div>
 
           {/* Navigation Links */}
-          <a
-            href="#"
-            className="block mb-3 text-purple-600 dark:text-purple-400 hover:underline"
-          >
-            Browse
-          </a>
-          <a
-            href="#"
-            className="block mb-3 text-purple-600 dark:text-purple-400 hover:underline"
-          >
-            Categories
-          </a>
-          <a
-            href="#"
-            className="block mb-3 text-purple-600 dark:text-purple-400 hover:underline"
-          >
-            Popular
-          </a>
-          <a
-            href="#"
-            className="block mb-3 text-purple-600 dark:text-purple-400 hover:underline"
-          >
-            Upload
-          </a>
+          {/* <nav className="flex flex-col space-y-4">
+            <a
+              href="#"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              Browse
+            </a>
+            <a
+              href="#"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              Categories
+            </a>
+            <a
+              href="#"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              Popular
+            </a>
+            <a
+              href="#"
+              className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              Upload
+            </a>
+          </nav> */}
 
-          {/* Login Button */}
-          <button className="w-full mt-3 mb-2 py-2 rounded-full bg-purple-600 dark:bg-purple-400 text-white hover:bg-purple-700 dark:hover:bg-purple-500 transition-colors">
-            Login
-          </button>
+          {/* Divider */}
+          <hr className="border-gray-300 dark:border-gray-700" />
 
-          {/* Sign Up Button */}
-          <button className="w-full py-2 rounded-full bg-purple-600 dark:bg-purple-400 text-white hover:bg-purple-700 dark:hover:bg-purple-500 transition-colors">
-            Sign Up
-          </button>
+          {/* Action Buttons */}
+          <div className="flex flex-col space-y-4">
+            <button
+              onClick={handleLoginClick} // Trigger login redirection
+              className="w-full py-3 rounded-md bg-purple-600 text-white font-medium hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 transition"
+            >
+              Login
+            </button>
+            <button
+              onClick={handleRegisterClick} // Trigger register redirection
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation"; // Correct import for `useRouter` in Next.js 13+
+import { useRouter } from "next/navigation"; 
 import CardWrapper from "./card-wrapper";
 import {
   Form,
@@ -14,18 +14,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RegisterSchema } from "../../../schema";
-import { useFormStatus } from "react-dom";
 
-import { ACCESS_TOKEN, REFRESH_TOKEN, REGISTER_API_PATH } from "@/constants";
+import { REGISTER_API_PATH } from "@/constants";
 import { apiClient } from "@/utils/api";
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const router = useRouter(); // Initialize the useRouter hook
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(RegisterSchema),
@@ -39,7 +38,7 @@ const RegisterForm = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    setErrorMessage(""); // Clear any previous errors
+    setErrorMessage("");
     try {
       const res = await apiClient.post(REGISTER_API_PATH, {
         username: data.username,
@@ -48,8 +47,7 @@ const RegisterForm = () => {
       });
 
       if (res.status === 201) {
-        console.log("Account created successfully");
-        router.push("/auth/login"); // Navigate to the login page
+        router.push("/auth/login");
       }
     } catch (error) {
       if (error.response && error.response.data) {
@@ -83,8 +81,6 @@ const RegisterForm = () => {
     }
   };
 
-  const { pending } = useFormStatus();
-
   return (
     <CardWrapper
       label="Create an account"
@@ -104,12 +100,15 @@ const RegisterForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  {/* <FormLabel>Email</FormLabel> */}
+                  {/* <FormLabel className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Email
+                  </FormLabel> */}
                   <FormControl>
                     <Input
                       {...field}
                       type="email"
-                      placeholder="email"
+                      placeholder="Enter your email"
+                      className="rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                   </FormControl>
                   <FormMessage />
@@ -121,9 +120,15 @@ const RegisterForm = () => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  {/* <FormLabel>Username</FormLabel> */}
+                  {/* <FormLabel className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Username
+                  </FormLabel> */}
                   <FormControl>
-                    <Input {...field} placeholder="username" />
+                    <Input
+                      {...field}
+                      placeholder="Enter your username"
+                      className="rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -134,9 +139,16 @@ const RegisterForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  {/* <FormLabel>Password</FormLabel> */}
+                  {/* <FormLabel className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Password
+                  </FormLabel> */}
                   <FormControl>
-                    <Input {...field} type="password" placeholder="password" />
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="Enter your password"
+                      className="rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -147,16 +159,27 @@ const RegisterForm = () => {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  {/* <FormLabel>Confirm Password</FormLabel> */}
+                  {/* <FormLabel className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Confirm Password
+                  </FormLabel> */}
                   <FormControl>
-                    <Input {...field} type="password" placeholder="confirm password" />
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder="Confirm your password"
+                      className="rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <Button type="submit" className="w-full bg-medium dark:bg-white" disabled={pending}>
+          <Button
+            type="submit"
+            className="w-full py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            disabled={loading}
+          >
             {loading ? "Loading..." : "Register"}
           </Button>
         </form>

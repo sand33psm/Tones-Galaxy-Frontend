@@ -5,69 +5,77 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, likedRingtones, audioRefs }) => {
-
-    console.log("Ringtone-id -> ", ringtone);
-    
-
   return (
-    <div className="group bg-white dark:bg-medium dark:border-white/20 shadow-md hover:shadow-xl transition-shadow duration-300 border-gray-300 rounded-lg border-2">
+    <div className="group bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border border-gray-200 dark:border-gray-700">
+      {/* Play/Pause Button */}
       <div className="relative">
         <Button
           variant="outline"
           size="icon"
-          className="absolute top-12 right-6 z-10 w-10 h-10 border-black/50 dark:border-gray-200 bg-white dark:bg-gray-800"
+          className="absolute top-4 right-4 z-10 w-12 h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:scale-110 transition-transform"
           onClick={(e) => {
             e.stopPropagation(); // Prevent Link navigation
             togglePlayPause(ringtone.file, ringtone.id);
           }}
         >
           {currentPlaying === ringtone.id ? (
-            <Pause className="w-9 h-9 text-black dark:text-white fill-current" size={36} />
+            <Pause className="w-6 h-6 text-gray-800 dark:text-gray-100" />
           ) : (
-            <Play className="w-9 h-9 text-black dark:text-white fill-current" size={36} />
+            <Play className="w-6 h-6 text-gray-800 dark:text-gray-100" />
           )}
         </Button>
       </div>
+
+      {/* Card Content */}
       <Link href={`/ringtones/${ringtone.id}`} className="block">
-        <div className="p-4">
-          <h2 className="text-xl font-semibold cursor-pointer">{ringtone.name}</h2>
-          <p className="text-md text-gray-600 text-xl dark:text-white">
+        <div className="p-6">
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+            {ringtone.name}
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
             Genre: <span className="font-medium">{ringtone.genre}</span>
           </p>
         </div>
       </Link>
-      <div className="p-4">
+
+      {/* Audio Player and Actions */}
+      <div className="p-6">
         <audio
           ref={(el) => (audioRefs.current[ringtone.id] = el)}
           src={ringtone.file}
           preload="auto"
-          className="mt-4 w-full"
+          className="w-full rounded-lg"
         ></audio>
-        <div className="mt-4 flex justify-between">
+
+        {/* Actions */}
+        <div className="mt-4 flex items-center justify-between">
+          {/* Like Button */}
           <Button
             variant="ghost"
             className={`flex items-center gap-2 ${
-              likedRingtones[ringtone.id] ? 'text-red-500' : 'text-gray-500 dark:text-white'
+              likedRingtones[ringtone.id] ? 'text-red-500' : 'text-gray-500 dark:text-gray-300'
             }`}
             onClick={() => toggleLike(ringtone.id)}
-            style={{
-              backgroundColor: 'transparent', // No background on hover
-            }}
           >
             <Heart
               size={20}
-              fill={likedRingtones[ringtone.id] ? 'red' : 'none'} // Red fill when liked
+              fill={likedRingtones[ringtone.id] ? 'red' : 'none'}
               className="transition-all duration-200"
             />
             Like - {ringtone.total_likes}
           </Button>
-          <Button variant="ghost" className="flex items-center gap-2">
-            <Share2 size={20} className="dark:text-white" /> Share
+
+          {/* Share Button */}
+          <Button variant="ghost" className="flex items-center gap-2 text-gray-500 dark:text-gray-300 hover:text-purple-500">
+            <Share2 size={20} />
+            Share
           </Button>
+
+          {/* Download Button */}
           <Button variant="default" asChild className="ml-auto">
             <Link
-              className="bg-purple-500 dark:bg-white hover:bg-gray-200"
               href={`http://localhost:8000/api/v1/ringtones/${ringtone.id}/download/`}
+              className="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
               download
             >
               Download

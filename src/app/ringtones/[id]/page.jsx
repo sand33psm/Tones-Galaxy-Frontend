@@ -50,21 +50,15 @@ function Ringtone() {
   };
 
   const toggleLike = async (id) => {
-
-    console.log("clicked on like", id);
-    
     try {
       const res = await authApiClient.post(`api/v1/ringtones/${id}/like/`);
-      console.log(res);
-
       setLikedRingtones((prev) => ({
         ...prev,
-        [id]: !prev[id], // Toggle the like status
+        [id]: !prev[id],
       }));
     } catch (error) {
-      if (error.status == 401) {
-        console.log(error.status, 'Error occured');
-        router.push('auth/login');
+      if (error.status === 401) {
+        router.push("auth/login");
       }
     }
   };
@@ -72,65 +66,57 @@ function Ringtone() {
   if (error) return <div>Error: {error}</div>;
   if (!ringtone) return <div>Loading...</div>;
 
-
-
   return (
     <>
       <Navbar />
       <div className="container mx-auto p-6">
-        {/* <h1 className="text-4xl font-semibold text-center text-gray-900 mb-12 dark:text-white">
-          Ringtone Details
-        </h1> */}
-        <Card className="dark:bg-slate-800/50 group shadow-md hover:shadow-xl transition-shadow duration-300 w-full max-w-lg mx-auto">
-          <CardHeader className="relative">
+        <Card className="dark:bg-slate-800/50 shadow-lg transition-all duration-300 w-full max-w-3xl mx-auto rounded-lg border border-gray-300 dark:border-slate-700">
+          <CardHeader className="relative p-6 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-t-lg">
+            <h2 className="text-3xl font-bold">{ringtone.name}</h2>
+            <p className="text-md mt-2">{ringtone.description || "No description available."}</p>
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
-              className="absolute top-8 right-6 z-10 "
+              className="absolute top-6 right-6 z-10 bg-white text-purple-500 hover:text-purple-700 hover:bg-gray-100"
               onClick={() => togglePlayPause(ringtone.file, ringtone.id)}
             >
               {playing === ringtone.id ? <Pause size={24} /> : <Play size={24} />}
             </Button>
-            <h2 className="text-xl font-semibold">{ringtone.name}</h2>
-            {/* <p className="text-sm">{ringtone.description || "No description available."}</p> */}
           </CardHeader>
-          <CardContent>
-            <p className="text-md text-gray-600">
-              Genre: <span className="font-medium">{ringtone.genre}</span>
+          <CardContent className="p-6">
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              <strong>Genre:</strong> {ringtone.genre}
             </p>
-            <p className="text-sm text-gray-600">
-              Uploaded: {new Date(ringtone.date_uploaded).toLocaleString()}
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+              <strong>Uploaded:</strong> {new Date(ringtone.date_uploaded).toLocaleString()}
             </p>
             <audio
               ref={(el) => (audioRefs.current[ringtone.id] = el)}
               src={ringtone.file}
               preload="auto"
-              className="mt-4 w-full"
+              className="mt-6 w-full rounded-lg"
             ></audio>
-            <div className="mt-4 flex justify-between">
-              <Button variant="ghost" 
-              className={`flex items-center gap-2 ${
-                likedRingtones[ringtone.id] ? 'text-red-500' : 'text-gray-500 dark:text-white'
-              }`}
-              onClick={() => toggleLike(ringtone.id)}
-              style={{
-                backgroundColor: 'transparent', // No background on hover
-              }}
+            <div className="mt-6 flex items-center justify-between">
+              <Button
+                variant="ghost"
+                className={`flex items-center gap-2 ${
+                  likedRingtones[ringtone.id] ? "text-red-500" : "text-gray-500 dark:text-gray-300"
+                }`}
+                onClick={() => toggleLike(ringtone.id)}
               >
-                <Heart size={20}
-              fill={likedRingtones[ringtone.id] ? 'red' : 'none'} // Red fill when liked
-              className="transition-all duration-200"/> Like - {ringtone.total_likes}
+                <Heart
+                  size={20}
+                  fill={likedRingtones[ringtone.id] ? "red" : "none"}
+                  className="transition-all duration-200"
+                />
+                Like - {ringtone.total_likes}
               </Button>
               <Button variant="ghost" className="flex items-center gap-2">
-                <Share2 size={20} className="text-blue-500" /> Share
+                <Share2 size={20} className="text-blue-500" />
+                Share
               </Button>
-              <Button variant="default" asChild>
-
-                <a
-                  className="bg-purple-500 hover:bg-purple-600"
-                  href={`http://localhost:8000/api/v1/ringtones/${ringtone.id}/download/`}
-                  download
-                >
+              <Button variant="default" className="bg-purple-500 hover:bg-purple-600 text-white rounded-lg px-4 py-2">
+                <a href={`http://localhost:8000/api/v1/ringtones/${ringtone.id}/download/`} download>
                   Download
                 </a>
               </Button>
