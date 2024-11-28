@@ -40,21 +40,31 @@ const RingtoneGrid = () => {
   };
 
   const toggleLike = async (id) => {
-    try {
-      const res = await authApiClient.post(`api/v1/ringtones/${id}/like/`);
-      console.log(res);
+  try {
+    const res = await authApiClient.post(`api/v1/ringtones/${id}/like/`);
+    const updatedRingtone = res.data; // Assuming your API returns the updated ringtone object
 
-      setLikedRingtones((prev) => ({
-        ...prev,
-        [id]: !prev[id], // Toggle the like status
-      }));
-    } catch (error) {
-      if (error.status == 401) {
-        console.log(error.status, 'Error occured');
-        router.push('auth/login');
-      }
+    // Update the likedRingtones and ringtone data in the state
+    setLikedRingtones((prev) => ({
+      ...prev,
+      [id]: !prev[id], // Toggle the like status
+    }));
+
+    setRingtones((prevRingtones) =>
+      prevRingtones.map((ringtone) =>
+        ringtone.id === id
+          ? { ...ringtone, total_likes: updatedRingtone.total_likes } // Update like count
+          : ringtone
+      )
+    );
+  } catch (error) {
+    if (error.status === 401) {
+      console.log(error.status, 'Error occurred');
+      router.push('auth/login');
     }
-  };
+  }
+};
+
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

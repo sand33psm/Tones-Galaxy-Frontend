@@ -1,10 +1,31 @@
-// components/RingtoneCard.jsx
 import { Button } from '@/components/ui/button';
 import { Play, Pause, Heart, Share2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useToast } from "@/hooks/use-toast"
+
 
 const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, likedRingtones, audioRefs }) => {
+  const { toast } = useToast()
+  const handleCopyLink = () => {
+    const url = `http://localhost:3000/ringtones/${ringtone.id}`;
+
+
+    // Copy the URL to the clipboard
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        // Show a toast notification
+        toast({
+          title: "Ringtone copied succesfully",
+          // description: "Friday, February 10, 2023 at 5:57 PM",
+        })
+      })
+      .catch((err) => {
+        toast({
+          title: "Error occured while copying ringtone!",
+        })
+      });
+  };
+
   return (
     <div className="group bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg border border-gray-200 dark:border-gray-700">
       {/* Play/Pause Button */}
@@ -66,7 +87,11 @@ const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, l
           </Button>
 
           {/* Share Button */}
-          <Button variant="ghost" className="flex items-center gap-2 text-gray-500 dark:text-gray-300 hover:text-purple-500">
+          <Button
+            variant="ghost"
+            className="flex items-center gap-2 text-gray-500 dark:text-gray-300 hover:text-purple-500"
+            onClick={handleCopyLink}
+          >
             <Share2 size={20} />
             Share
           </Button>

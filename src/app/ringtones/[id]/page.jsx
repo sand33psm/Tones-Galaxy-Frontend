@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import Navbar from "@/components/Navbar/Navbar";
 import { authApiClient } from "@/utils/api";
+import { useToast } from "@/hooks/use-toast";  // Import the useToast hook
+import Link from "next/link";  // Import Link from Next.js
 
 function Ringtone() {
   const [ringtone, setRingtone] = useState(null);
@@ -17,6 +19,7 @@ function Ringtone() {
 
   const audioRefs = useRef({});
   const { id } = useParams();
+  const { toast } = useToast();  // Initialize the toast hook
 
   useEffect(() => {
     const getRingtone = async () => {
@@ -63,6 +66,25 @@ function Ringtone() {
     }
   };
 
+  const handleCopyLink = () => {
+    const url = `http://localhost:3000/ringtones/${ringtone.id}`;
+
+    // Copy the URL to the clipboard
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        // Show a toast notification
+        toast({
+          title: "Ringtone copied successfully"
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Error occurred while copying ringtone!",
+          className: "fixed bottom-16 right-4 z-50 bg-red-500 p-4 rounded-md shadow-md text-white sm:bottom-4 sm:right-4 sm:bg-red-600",
+        });
+      });
+  };
+
   if (error) return <div>Error: {error}</div>;
   if (!ringtone) return <div>Loading...</div>;
 
@@ -70,6 +92,16 @@ function Ringtone() {
     <>
       <Navbar />
       <div className="container mx-auto p-6">
+        {/* Stylish link to /ringtones */}
+        <div className="mb-6">
+          <Link
+            href="/ringtones"
+            className="text-xl font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-300"
+          >
+            ← Back to Ringtones
+          </Link>
+        </div>
+
         <Card className="dark:bg-slate-800/50 shadow-lg transition-all duration-300 w-full max-w-3xl mx-auto rounded-lg border border-gray-300 dark:border-slate-700">
           <CardHeader className="relative p-6 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-t-lg">
             <h2 className="text-3xl font-bold">{ringtone.name}</h2>
@@ -111,8 +143,12 @@ function Ringtone() {
                 />
                 Like - {ringtone.total_likes}
               </Button>
-              <Button variant="ghost" className="flex items-center gap-2">
-                <Share2 size={20} className="text-blue-500" />
+              <Button
+                variant="ghost"
+                className="flex items-center gap-2 text-blue-500"
+                onClick={handleCopyLink}  // Call handleCopyLink to copy and show toast
+              >
+                <Share2 size={20} />
                 Share
               </Button>
               <Button variant="default" className="bg-purple-500 hover:bg-purple-600 text-white rounded-lg px-4 py-2">
