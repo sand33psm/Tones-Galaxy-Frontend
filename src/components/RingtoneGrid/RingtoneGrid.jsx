@@ -42,6 +42,8 @@ const RingtoneGrid = () => {
   const toggleLike = async (id) => {
   try {
     const res = await authApiClient.post(`api/v1/ringtones/${id}/like/`);
+    console.log('res->', res);
+    
     const updatedRingtone = res.data; // Assuming your API returns the updated ringtone object
 
     // Update the likedRingtones and ringtone data in the state

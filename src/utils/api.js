@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ACCESS_TOKEN } from '@/constants';
+import Cookies from 'js-cookie';
 
 // Create an instance of Axios
 const apiClient = axios.create({
@@ -22,7 +23,11 @@ const authApiClient = axios.create({
 // Add an interceptor to attach tokens to authenticated requests
 authApiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem(ACCESS_TOKEN);
+    // const token = localStorage.getItem(ACCESS_TOKEN);
+    const token = Cookies.get(ACCESS_TOKEN)
+
+    console.log("token", Cookies.get(ACCESS_TOKEN));
+    
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
