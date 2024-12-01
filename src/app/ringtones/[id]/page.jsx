@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { authApiClient } from "@/utils/api";
 import { useToast } from "@/hooks/use-toast";  // Import the useToast hook
 import Link from "next/link";  // Import Link from Next.js
+import { RINGTONE_COPY_PATH } from "@/constants";
 
 function Ringtone() {
   const [ringtone, setRingtone] = useState(null);
@@ -67,7 +68,8 @@ function Ringtone() {
   };
 
   const handleCopyLink = () => {
-    const url = `http://localhost:3000/ringtones/${ringtone.id}`;
+    // const url = `http://localhost:3000/ringtones/${ringtone.id}`;
+    const url = `${RINGTONE_COPY_PATH}/${ringtone.id}`
 
     // Copy the URL to the clipboard
     navigator.clipboard.writeText(url)
