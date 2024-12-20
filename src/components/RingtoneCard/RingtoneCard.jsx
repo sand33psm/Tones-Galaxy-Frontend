@@ -16,12 +16,14 @@ const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, l
         // Show a toast notification
         toast({
           title: "Ringtone copied succesfully",
+          className: "fixed bottom-16 w-68 bg-slate-700/10 right-4 z-50 p-4 rounded-md shadow-md text-white sm:bottom-4 sm:right-4 sm:bg-slate-700/10",
           // description: "Friday, February 10, 2023 at 5:57 PM",
         })
       })
       .catch((err) => {
         toast({
           title: "Error occured while copying ringtone!",
+          className: "fixed bottom-16 w-68 bg-slate-500 right-4 z-50 p-4 rounded-md shadow-md text-white sm:bottom-4 sm:right-4 sm:bg-red-500",
         })
       });
   };

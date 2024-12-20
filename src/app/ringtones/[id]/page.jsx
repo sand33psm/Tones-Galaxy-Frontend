@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from "react";
 import { fetchRingtone } from "@/services/ringtonesService";
 import { Play, Pause, Heart, Share2 } from "lucide-react";
@@ -17,6 +18,8 @@ function Ringtone() {
   const [error, setError] = useState(null);
   const [playing, setPlaying] = useState(null);
   const [likedRingtones, setLikedRingtones] = useState({});
+
+  const router = useRouter();
 
   const audioRefs = useRef({});
   const { id } = useParams();
@@ -56,13 +59,14 @@ function Ringtone() {
   const toggleLike = async (id) => {
     try {
       const res = await authApiClient.post(`api/v1/ringtones/${id}/like/`);
+
       setLikedRingtones((prev) => ({
         ...prev,
         [id]: !prev[id],
       }));
     } catch (error) {
       if (error.status === 401) {
-        router.push("auth/login");
+        router.push("/auth/login");
       }
     }
   };
@@ -76,7 +80,8 @@ function Ringtone() {
       .then(() => {
         // Show a toast notification
         toast({
-          title: "Ringtone copied successfully"
+          title: "Ringtone copied successfully",
+          className: "fixed bottom-16 w-68 bg-slate-700/10 right-4 z-50 p-4 rounded-md shadow-md text-white sm:bottom-4 sm:right-4 sm:bg-slate-700/10",
         });
       })
       .catch((err) => {
