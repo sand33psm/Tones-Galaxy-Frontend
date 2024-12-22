@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast"
 const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, likedRingtones, audioRefs }) => {
   const { toast } = useToast()
   const handleCopyLink = () => {
-    const url = `https://www.ringtonesglitch.com/${ringtone.id}`;
+    const url = `https://www.ringtonesglitch.com/ringtones/${ringtone.id}`;
 
     // Copy the URL to the clipboard
     navigator.clipboard.writeText(url)
