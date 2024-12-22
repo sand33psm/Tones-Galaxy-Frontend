@@ -7,8 +7,7 @@ import { useToast } from "@/hooks/use-toast"
 const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, likedRingtones, audioRefs }) => {
   const { toast } = useToast()
   const handleCopyLink = () => {
-    const url = `http://localhost:3000/ringtones/${ringtone.id}`;
-
+    const url = `https://www.ringtonesglitch.com/${ringtone.id}`;
 
     // Copy the URL to the clipboard
     navigator.clipboard.writeText(url)
@@ -101,7 +100,7 @@ const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, l
           {/* Download Button */}
           <Button variant="default" asChild className="ml-auto">
             <Link
-              href={`http://localhost:8000/api/v1/ringtones/${ringtone.id}/download/`}
+              href={`https://api.ringtonesglitch.com/api/v1/ringtones/${ringtone.id}/download/`}
               className="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
               download
             >
