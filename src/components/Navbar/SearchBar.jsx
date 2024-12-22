@@ -15,7 +15,7 @@ function SearchBar() {
         <>
           <Music className="w-8 h-8 text-purple-600 dark:text-purple-400" />
           <Link href="/" className="text-xl md:text-2xl font-bold">
-            Tones Galaxy
+            Ringtones Glitch
           </Link>
           <button
             onClick={() => setIsSearchActive(true)} // Show input field
