@@ -45,18 +45,18 @@ function Navbar() {
           <ThemeToggle />
           {/* Login/Register Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
+            {/* <Link
               href="/auth/login"
               className="px-4 py-2 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition-colors"
             >
               Login
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               href="/auth/register"
               className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
             >
               Register
-            </Link>
+            </Link> */}
           </div>
           {/* Mobile Menu for smaller screens */}
           <MobileMenu />
