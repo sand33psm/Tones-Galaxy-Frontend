@@ -1,8 +1,7 @@
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster"
-
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,14 +15,45 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Ringtones Glitch",
-  description: "Welcome to RingtonesGlitch – Your Ultimate Destination for Free Ringtones!",
+  title: "Ringtones Glitch - Free Ringtones for Everyone!!!!!",
+  description: "Explore Ringtones Glitch – your ultimate destination to find and download free ringtones. Download, upload, and share the best ringtones online!",
+  keywords: "free ringtones, ringtone downloads, upload ringtones, ringtone website, mobile ringtones",
+  url: "https://www.ringtonesglitch.com",
+  image: "/meta-image.png", // Replace with the actual path to your logo or banner.
+  image: "/ringtonesglitch-logo.jpeg"
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, metadata: pageMetadata = {}}) {
+  const mergedMetadata = {
+    ...metadata,
+    ...pageMetadata,
+    title: pageMetadata.title || metadata.title.default,
+  };
+
   return (
     <html lang="en">
       <head>
+      <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={mergedMetadata.description} />
+        <meta name="keywords" content={mergedMetadata.keywords} />
+        <meta name="author" content="Ringtones Glitch Team" />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph Metadata */}
+        <meta property="og:title" content={mergedMetadata.title} />
+        <meta property="og:description" content={mergedMetadata.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={mergedMetadata.url} />
+        <meta property="og:image" content={mergedMetadata.url + mergedMetadata.image} />
+
+        {/* Twitter Card Metadata */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={mergedMetadata.title} />
+        <meta name="twitter:description" content={mergedMetadata.description} />
+        
+
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-4CMRN0LW75"
           strategy="afterInteractive"
@@ -38,8 +68,7 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-medium  bg-green-50/50 dark:text-white`}
-        // {`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-green-50 to-green-100'}`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-medium bg-green-50/50 dark:text-white`}
       >
         {children}
         <Toaster />
