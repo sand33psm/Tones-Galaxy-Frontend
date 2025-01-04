@@ -29,7 +29,7 @@ function MobileMenu() {
   return (
     <div className="relative md:hidden">
       {/* Menu Toggle Button */}
-      {/* <button
+      <button
         className="p-2 rounded-md text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="Toggle Menu"
@@ -37,7 +37,7 @@ function MobileMenu() {
         aria-controls="mobile-menu"
       >
         {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button> */}
+      </button>
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (

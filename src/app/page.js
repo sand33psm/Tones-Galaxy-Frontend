@@ -26,9 +26,9 @@ const HomePage = () => {
                   <Music className="mr-2" />
                   Browse Ringtones
                 </Link>
-                {/* <Link href={'/upload'} className="px-8 py-4 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 text-lg flex items-center justify-center md:justify-start space-x-2 dark:text-white">
+                <Link href={'/upload'} className="px-8 py-4 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 text-lg flex items-center justify-center md:justify-start space-x-2 dark:text-white">
                   Upload Ringtone
-                </Link> */}
+                </Link>
               </div>
             </div>
           </div>
