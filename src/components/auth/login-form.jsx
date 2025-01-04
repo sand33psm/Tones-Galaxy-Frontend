@@ -45,6 +45,8 @@ const LoginForm = () => {
       Cookies.set(ACCESS_TOKEN, res.data.access, { secure: false, sameSite: "strict", path: "/" });
       Cookies.set(REFRESH_TOKEN, res.data.refresh, { secure: false, sameSite: "strict", path: "/" });
 
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
       // Access token from cookies
       const token = Cookies.get(ACCESS_TOKEN);
 
