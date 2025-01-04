@@ -42,8 +42,8 @@ const LoginForm = () => {
       const res = await apiClient.post(LOGIN_API_PATH, { username: usernameOrEmail, password });
 
       // Set tokens in cookies
-      Cookies.set(ACCESS_TOKEN, res.data.access, { secure: false, sameSite: "strict", path: "/" });
-      Cookies.set(REFRESH_TOKEN, res.data.refresh, { secure: false, sameSite: "strict", path: "/" });
+      Cookies.set(ACCESS_TOKEN, res.data.access, { secure: true, sameSite: "strict", path: "/" });
+      Cookies.set(REFRESH_TOKEN, res.data.refresh, { secure: true, sameSite: "strict", path: "/" });
 
       await new Promise((resolve) => setTimeout(resolve, 100));
 
