@@ -24,6 +24,9 @@ module.exports = {
 			'download-clr': '#3b82f6',
 			'download-purple': '#a855f7',
 			'background-clr': '#f9a8d4',
+			'brand-light': '#f7f9fc',
+			'brand-dark': '#2d3748',
+			'accent-blue': '#3182ce',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

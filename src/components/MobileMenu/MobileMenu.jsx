@@ -26,6 +26,21 @@ function MobileMenu() {
     router.push("/upload"); // Redirect to upload page
   };
 
+  const handleAboutUsClick = () => {
+    setIsMenuOpen(false)
+    router.push("/about-us")
+  }
+
+  const handlePrivacyPolicy = () => {
+    setIsMenuOpen(false)
+    router.push("/privacy-policy")
+  }
+
+  const handleTermsOfService = () => {
+    setIsMenuOpen(false)
+    router.push("/terms-of-service")
+  }
+
   return (
     <div className="relative md:hidden">
       {/* Menu Toggle Button */}
@@ -80,6 +95,27 @@ function MobileMenu() {
               className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
             >
               Sign Up
+            </button>
+
+            <button
+              onClick={handleAboutUsClick}
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              About us
+            </button>
+
+            <button
+              onClick={handlePrivacyPolicy}
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              Privacy Policy
+            </button>
+
+            <button
+              onClick={handleTermsOfService}
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              Terms of service
             </button>
           </div>
         </div>
