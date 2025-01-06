@@ -6,11 +6,11 @@ const TermsOfService = () => {
       <Navbar />
       <div className="bg-gray-50 min-h-screen text-gray-800 dark:bg-medium">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-gray-100 via-gray-50 to-gray-200 shadow-md">
-          <div className="max-w-4xl mx-auto px-4 py-4 text-center dark:bg-medium">
+        <div className="bg-gradient-to-r from-gray-100 via-gray-50 to-gray-200 shadow-md dark:bg-medium">
+          <div className="mt-2 pb-2 text-center dark:bg-medium">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Terms of Service</h1>
             <p className="text-lg text-gray-600 mt-4 dark:text-white">
-              Please read these terms carefully before using our services.
+              Please read these terms carefully.
             </p>
           </div>
         </div>
