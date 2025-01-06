@@ -8,6 +8,11 @@ function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter(); // Hook for redirection
 
+  const handleHomeClick = () => {
+    setIsMenuOpen(false); // Close the menu
+    router.push("/"); // Redirect to login
+  }
+
   // Function to handle redirection to login
   const handleLoginClick = () => {
     setIsMenuOpen(false); // Close the menu
@@ -52,7 +57,7 @@ function MobileMenu() {
   }
 
   return (
-    <div className="relative md:hidden">
+    <div className="relative">
       {/* Menu Toggle Button */}
       <button
         className="p-2 rounded-md text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none"
@@ -83,10 +88,17 @@ function MobileMenu() {
 
           {/* Action Buttons */}
           <div className="flex flex-col space-y-4">
+          <button
+              onClick={handleHomeClick} // Trigger upload redirection
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              Home
+            </button>
+
             {/* Upload Button */}
             <button
               onClick={handleUploadClick} // Trigger upload redirection
-              className="w-full py-3 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
             >
               Upload
             </button>
