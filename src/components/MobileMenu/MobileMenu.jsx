@@ -86,27 +86,11 @@ function MobileMenu() {
               Upload
             </button>
 
-            {/* Login Button */}
             <button
-              onClick={handleLoginClick} // Trigger login redirection
-              className="w-full py-3 rounded-md bg-purple-600 text-white font-medium hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 transition"
-            >
-              Login
-            </button>
-
-            {/* Sign Up Button */}
-            <button
-              onClick={handleRegisterClick} // Trigger register redirection
+              onClick={handleDmca}
               className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
             >
-              Sign Up
-            </button>
-
-            <button
-              onClick={handleAboutUsClick}
-              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
-            >
-              About us
+              DMCA
             </button>
 
             <button
@@ -131,10 +115,26 @@ function MobileMenu() {
             </button> */}
 
             <button
-              onClick={handleDmca}
+              onClick={handleAboutUsClick}
               className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
             >
-              DMCA
+              About us
+            </button>
+
+            {/* Login Button */}
+            <button
+              onClick={handleLoginClick} // Trigger login redirection
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              Login
+            </button>
+
+            {/* Sign Up Button */}
+            <button
+              onClick={handleRegisterClick} // Trigger register redirection
+              className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
+              Sign Up
             </button>
           </div>
         </div>
