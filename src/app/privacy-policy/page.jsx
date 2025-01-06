@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
             <p className="text-gray-700 leading-relaxed dark:text-gray-300">
               You have the right to access, update, or delete your personal information. If you wish to exercise these
               rights, please contact us at - 
-              <a href="mailto:support@ringtonesglitch.com" className="text-blue-600 font-medium underline">
+              <a href="mailto:ganesham029@gmail.com" className="text-blue-600 font-medium underline">
                 support@ringtonesglitch.com
               </a>
               .
@@ -57,7 +57,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Contact Us</h2>
             <p className="text-gray-700 leading-relaxed dark:text-gray-300">
               If you have any questions or concerns about this Privacy Policy, feel free to reach out to us at
-              <a href="mailto:support@ringtonesglitch.com" className="text-blue-600 font-medium underline">
+              <a href="mailto:ganesham029.com" className="text-blue-600 font-medium underline">
                 support@ringtonesglitch.com
               </a>
               .
