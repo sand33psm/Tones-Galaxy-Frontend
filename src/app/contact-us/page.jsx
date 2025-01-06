@@ -1,4 +1,3 @@
-// app/contact/page.jsx
 'use client'
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar/Navbar';
@@ -36,7 +35,7 @@ const ContactPage = () => {
   return (
     <>
     <Navbar/>
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32 p-4">
       <h1 className="text-4xl font-semibold mb-6">Contact Us</h1>
       <p className="mb-6">We'd love to hear from you! Whether you have a question, feedback, or need support, feel free to get in touch with us. Our team is here to assist you.</p>
 
@@ -46,7 +45,7 @@ const ContactPage = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 shadow-md rounded">
+      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded w-full dark:bg-medium border-2 dark:border-gray-500/50">
         <div className="mb-4">
           <label htmlFor="name" className="block text-lg font-medium">Your Name</label>
           <input
@@ -56,6 +55,7 @@ const ContactPage = () => {
             value={formData.name}
             onChange={handleChange}
             className="w-full mt-2 p-2 border border-gray-300 rounded"
+            placeholder="Enter your full name"
             required
           />
         </div>
@@ -69,6 +69,7 @@ const ContactPage = () => {
             value={formData.email}
             onChange={handleChange}
             className="w-full mt-2 p-2 border border-gray-300 rounded"
+            placeholder="Enter your email address"
             required
           />
         </div>
@@ -81,7 +82,8 @@ const ContactPage = () => {
             value={formData.message}
             onChange={handleChange}
             rows="4"
-            className="w-full mt-2 p-2 border border-gray-300 rounded"
+            className="w-full mt-2 p-2 border border-gray-300 rounded dark:text-black"
+            placeholder="Write your message here"
             required
           />
         </div>
@@ -100,13 +102,6 @@ const ContactPage = () => {
         <p className="mb-4">If you prefer, you can reach us directly through the following methods:</p>
         <ul className="list-inside list-disc mb-6">
           <li>Email: <a href="mailto:support@ringtonesglitch.com" className="text-blue-500">support@ringtonesglitch.com</a></li>
-          <li>Phone: (123) 456-7890</li>
-          <li>Follow us on social media: 
-            <ul className="flex space-x-4 mt-2">
-              <li><a href="https://twitter.com/ringtonesglitch" target="_blank" className="text-blue-500">Twitter</a></li>
-              <li><a href="https://facebook.com/ringtonesglitch" target="_blank" className="text-blue-500">Facebook</a></li>
-            </ul>
-          </li>
         </ul>
       </div>
     </div>

@@ -46,6 +46,11 @@ function MobileMenu() {
     router.push("/dmca")
   }
 
+  const handleContactUs = () => {
+    setIsMenuOpen(false)
+    router.push("/contact-us")
+  }
+
   return (
     <div className="relative md:hidden">
       {/* Menu Toggle Button */}
@@ -107,12 +112,12 @@ function MobileMenu() {
               Terms of service
             </button>
 
-            {/* <button
+            <button
               onClick={handleContactUs}
               className="w-full py-3 rounded-md bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
             >
               Contact Us
-            </button> */}
+            </button>
 
             <button
               onClick={handleAboutUsClick}
