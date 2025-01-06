@@ -70,7 +70,7 @@ const PrivacyPolicy = () => {
                 href="mailto:ganesham029@gmail.com"
                 className="text-blue-600 font-medium underline"
               >
-                ganesham029@gmail.com
+                support@ringtonesglitch.com
               </a>
               .
             </p>
@@ -88,7 +88,7 @@ const PrivacyPolicy = () => {
                 href="mailto:ganesham029@gmail.com"
                 className="text-blue-600 font-medium underline"
               >
-                ganesham029@gmail.com
+                support@ringtonesglitch.com
               </a>
               .
             </p>

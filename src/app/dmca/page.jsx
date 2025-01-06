@@ -18,7 +18,7 @@ const DmcaPage = () => {
 
       <h2 className="text-2xl font-semibold mb-4">Submitting a DMCA Takedown Notice</h2>
       <p className="mb-4">
-        To file a DMCA takedown notice, please email us at <a href="mailto:ganesham029@gmail.com" className="text-blue-500">ganesham029@gmail.com</a> with the following information:
+        To file a DMCA takedown notice, please email us at <a href="mailto:ganesham029@gmail.com" className="text-blue-500">support@ringtonesglitch.com</a> with the following information:
       </p>
       <ul className="list-inside list-disc mb-6">
         <li>Your name, address, phone number, and email address.</li>
@@ -32,7 +32,7 @@ const DmcaPage = () => {
       <h2 className="text-2xl font-semibold mb-4">Counter-Notice Process</h2>
       <p className="mb-4">
         If you believe that your content was removed by mistake or misidentification, you can file a counter-notice. To do so,
-        please email us at <a href="mailto:ganesham029@gmail.com" className="text-blue-500">ganesham029@gmail.com</a> with the following information:
+        please email us at <a href="mailto:ganesham029@gmail.com" className="text-blue-500">support@ringtonesglitch.com</a> with the following information:
       </p>
       <ul className="list-inside list-disc mb-6">
         <li>Your name, address, phone number, and email address.</li>
@@ -46,7 +46,7 @@ const DmcaPage = () => {
         For any other questions regarding DMCA or copyright issues, please contact us at:
       </p>
       <ul className="list-inside list-disc mb-6">
-        <li>Email: <a href="mailto:ganesham029@gmail.com" className="text-blue-500">ganesham029@gmail.com</a></li>
+        <li>Email: <a href="mailto:ganesham029@gmail.com" className="text-blue-500">support@ringtonesglitch.com</a></li>
         <li>Address: RingtonesGlitch, 123 Ringtone Street, City, Country</li>
       </ul>
 
