@@ -54,7 +54,7 @@ const ContactPage = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full mt-2 p-2 border border-gray-300 rounded"
+            className="w-full mt-2 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="Enter your full name"
             required
           />
@@ -68,7 +68,7 @@ const ContactPage = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full mt-2 p-2 border border-gray-300 rounded"
+            className="w-full mt-2 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="Enter your email address"
             required
           />
@@ -101,7 +101,7 @@ const ContactPage = () => {
         <h2 className="text-2xl font-semibold mb-4">Other Ways to Reach Us</h2>
         <p className="mb-4">If you prefer, you can reach us directly through the following methods:</p>
         <ul className="list-inside list-disc mb-6">
-          <li>Email: <a href="mailto:support@ringtonesglitch.com" className="text-blue-500">support@ringtonesglitch.com</a></li>
+          <li>Email: <a href="mailto:ganesham029@gmail.com" className="text-blue-500">support@ringtonesglitch.com</a></li>
         </ul>
       </div>
     </div>
