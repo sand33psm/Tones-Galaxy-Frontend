@@ -55,7 +55,7 @@ const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, l
             {ringtone.name}
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-            Genre: <span className="font-medium">{ringtone.genre}</span>
+            Genrekdsjfjfdsjfkjfjfdsflkdsf: <span className="font-medium">{ringtone.genre}</span>
           </p>
         </div>
       </Link>
