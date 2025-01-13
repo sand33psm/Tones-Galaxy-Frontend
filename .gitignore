@@ -38,8 +38,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-#sitemap
-sitemap.js
-app/sitemap.js
-Tones-Galaxy-Frontend/src/app/sitemap.js

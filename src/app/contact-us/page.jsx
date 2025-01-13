@@ -37,7 +37,7 @@ const ContactPage = () => {
     <Navbar/>
     <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-32 p-4">
       <h1 className="text-4xl font-semibold mb-6">Contact Us</h1>
-      <p className="mb-6">We'd love to hear from you! Whether you have a question, feedback, or need support, feel free to get in touch with us. Our team is here to assist you.</p>
+      <p className="mb-6">We&apos;d love to hear from you! Whether you have a question, feedback, or need support, feel free to get in touch with us. Our team is here to assist you.</p>
 
       {submissionStatus && (
         <div className="mb-4 p-4 bg-green-100 text-green-800 border border-green-200 rounded">
