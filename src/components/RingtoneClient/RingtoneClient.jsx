@@ -126,9 +126,12 @@ export default function RingtoneClient({ ringtone }) {
                 Share
               </Button>
               <Button variant="default" className="bg-purple-500 hover:bg-purple-600 text-white rounded-lg px-4 py-2">
-                <a href={`http://localhost:8000/api/v1/ringtones/${ringtone.id}/download/`} download>
+              <a href={`https://api.ringtonesglitch.com/api/v1/ringtones/${ringtone.id}/download/`} download>
                   Download
                 </a>
+                {/* <a href={`http://localhost:8000/api/v1/ringtones/${ringtone.id}/download/`} download>
+                  Download
+                </a> */}
               </Button>
             </div>
           </CardContent>

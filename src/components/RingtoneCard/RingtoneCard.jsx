@@ -100,7 +100,7 @@ const RingtoneCard = ({ ringtone, togglePlayPause, currentPlaying, toggleLike, l
           {/* Download Button */}
           <Button variant="default" asChild className="ml-auto">
             <Link
-              href={`https://api.ringtonesglitch.com/api/v1/ringtones/${ringtone.id}/download/`}
+              href={`http://127.0.0.1:8000/api/v1/ringtones/${ringtone.id}/download/`}
               className="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
               download
             >
