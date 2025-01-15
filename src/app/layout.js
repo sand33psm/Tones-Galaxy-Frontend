@@ -2,6 +2,7 @@ import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import AdSense from "@/components/AdSense/AdSense";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,40 +34,41 @@ export default function RootLayout({ children, metadata: pageMetadata = {}}) {
   return (
     <html lang="en">
       <head>
-      <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content={mergedMetadata.description} />
-        <meta name="keywords" content={mergedMetadata.keywords} />
-        <meta name="author" content="Ringtones Glitch Team" />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph Metadata */}
-        <meta property="og:title" content={mergedMetadata.title} />
-        <meta property="og:description" content={mergedMetadata.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={mergedMetadata.url} />
-        <meta property="og:image" content={mergedMetadata.url + mergedMetadata.image} />
+        <AdSense pId="6105325142498306"/>
+        <meta charSet="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="description" content={mergedMetadata.description} />
+          <meta name="keywords" content={mergedMetadata.keywords} />
+          <meta name="author" content="Ringtones Glitch Team" />
+          <meta name="robots" content="index, follow" />
+          
+          {/* Open Graph Metadata */}
+          <meta property="og:title" content={mergedMetadata.title} />
+          <meta property="og:description" content={mergedMetadata.description} />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={mergedMetadata.url} />
+          <meta property="og:image" content={mergedMetadata.url + mergedMetadata.image} />
 
-        {/* Twitter Card Metadata */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={mergedMetadata.title} />
-        <meta name="twitter:description" content={mergedMetadata.description} />
-        
+          {/* Twitter Card Metadata */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={mergedMetadata.title} />
+          <meta name="twitter:description" content={mergedMetadata.description} />
+          
 
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-4CMRN0LW75"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-4CMRN0LW75');
-          `}
-        </Script>
-      </head>
+          {/* Google Analytics */}
+          <Script
+            src="https://www.googletagmanager.com/gtag/js?id=G-4CMRN0LW75"
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-4CMRN0LW75');
+            `}
+          </Script>
+        </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-medium bg-green-50/50 dark:text-white`}
       >
